@@ -4,14 +4,14 @@
 
 | Column             | Type                | Options                   |
 |--------------------|---------------------|---------------------------|
-| name               | string              | null: false               |
+| nickname           | string              | null: false               |
 | email              | string              | null: false, unique: true |
 | encrypted_password | string              | null: false               |
 | first_name         | string              | null: false               |
 | first_name_kn      | string              | null: false               |
 | last_name          | string              | null: false               |
 | last_name_kn       | string              | null: false               |
-| birth_id           | datetime            | null: false               |
+| birth_id           | date                | null: false               |
 
 ### Association
 
@@ -41,8 +41,8 @@
 
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
-| item        | references | null: false, foreign_key: true |
 | user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -50,7 +50,7 @@
 - belongs_to :user
 - has_one :shi_add
 
-## shi_add table
+## shi_adds table
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
