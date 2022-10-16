@@ -5,13 +5,13 @@
 | Column             | Type                | Options                   |
 |--------------------|---------------------|---------------------------|
 | name               | string              | null: false               |
-| mail               | string              | null: false, unique: true |
+| email              | string              | null: false, unique: true |
 | encrypted_password | string              | null: false               |
 | first_name         | string              | null: false               |
 | first_name_kn      | string              | null: false               |
 | last_name          | string              | null: false               |
 | last_name_kn       | string              | null: false               |
-| birth_id           | integer             | null: false               |
+| birth_id           | datetime            | null: false               |
 
 ### Association
 
@@ -22,7 +22,7 @@
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
-| product                             | text       | null: false                    |
+| product                             | string     | null: false                    |
 | explanation                         | text       | null: false                    |
 | category_id                         | integer    | null: false                    |
 | situation_id                        | integer    | null: false                    |
@@ -55,11 +55,13 @@
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
 | post_code        | string     | null: false                    |
-| prefectures_id   | integer    | null: false                    |
+| sender_id        | integer    | null: false                    |
 | locality         | string     | null: false                    |
 | address          | string     | null: false                    |
-| building         | string     | null: false                    |
+| building         | string     |                                |
 | phone            | string     | null: false                    |
+| order            | references | null: false, foreign_key: true |
+
 
 ### Association
 
