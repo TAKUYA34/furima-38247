@@ -2,6 +2,12 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
+    @items = Item.all
+  end
+
+  def delivery_charge
+    @delivery_charge = Item.find_by(delivery_charge_id: params[:id])
+    @delivery_charges = Item.where(delivery_charge_id: params[:id]).order('created_at DESC')
   end
 
   def new
