@@ -5,9 +5,8 @@ RSpec.describe OrderShiAdds, type: :model do
     before do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
-      order = FactoryBot.create(:order)
       sleep 0.1
-      @order_shiadds = FactoryBot.build(:order_shi_adds, user_id: user.id, item_id: item.id, order_id: order.id)
+      @order_shiadds = FactoryBot.build(:order_shi_adds, user_id: user.id, item_id: item.id)
     end
  
 
@@ -42,8 +41,18 @@ RSpec.describe OrderShiAdds, type: :model do
         @order_shiadds.valid?
         expect(@order_shiadds.errors.full_messages).to include("Sender can't be blank")
       end
-      it '電話番号が10桁以上11桁以内の半角数値以外だと登録できない' do
+      it '電話番号が半角数値以外だと登録できない' do
         @order_shiadds.phone = '090-1234-5678'
+        @order_shiadds.valid?
+        expect(@order_shiadds.errors.full_messages).to include("Phone is invalid. Input half size number characters.")
+      end
+      it '電話番号が9桁以下では登録できない' do
+        @order_shiadds.phone = '00033232'
+        @order_shiadds.valid?
+        expect(@order_shiadds.errors.full_messages).to include("Phone is invalid. Input half size number characters.")
+      end
+      it '電話番号が12桁以上では登録できない' do
+        @order_shiadds.phone = '0003323206543'
         @order_shiadds.valid?
         expect(@order_shiadds.errors.full_messages).to include("Phone is invalid. Input half size number characters.")
       end

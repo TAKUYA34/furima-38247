@@ -6,8 +6,5 @@ FactoryBot.define do
     address           {"青山1-2-2"}
     phone             {'06066554321'}
     token             {"sk_test_ee23337fdd8cb182d4762176"}
-    association :user
-    association :item
-    association :order
   end
 end
