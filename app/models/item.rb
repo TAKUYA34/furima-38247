@@ -13,6 +13,7 @@ class Item < ApplicationRecord
   validates :shipping_id, numericality: { other_than: 1 , message: "can't be blank"}
 
   belongs_to :user
+  has_one :order
   has_one_attached :image
 
   with_options presence: true, format: {with: /\A[0-9]+\Z/ } do
