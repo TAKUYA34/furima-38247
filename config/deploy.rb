@@ -39,7 +39,7 @@ set :repo_url, "git@example.com:me/my_repo.git"
 # set :ssh_options, verify_host_key: :secure
 
 # capistranoのバージョンを記載。固定のバージョンを利用し続け、バージョン変更によるトラブルを防止する
-lock 'capistrano (~> 3.1, >= 3.1.0)'
+lock '3.1'
 
 # Capistranoのログの表示に利用する
 set :application, 'furima-38247'
@@ -54,8 +54,8 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.6.5' #カリキュラム通りに進めた場合、’2.6.5’ です
 
 # どの公開鍵を利用してデプロイするか
-set :ssh_options, auth_methods: ['ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC180ethyfZivFmBUbP9Y2UgY/gzpjBOubsetUPB3WTmaXVQ6GAOxNtel2wwkw7ZnLTjXocog5gHoRuUp0vJzfbVyh4J1G9pCdxsMNLrIhyOCPoFewOqGF+8UkE0TzNueAHBpw14nkb/Bi4os4eekFu92iGpNpD7qszLckiz/YxhV+czt/5U+4tUZTElhuG8XqMbW04ovJPQ3E24bfh3+cH9C5wm8U7VH/jfrQuVyUhW6rR573PvynMadIiRxIOLt6jaZg18T5Lzt/81axz/fs/9I30zV9Ohv/A9kC2itDTdqcCFmnhHKxsmyLxCbElb3SJajPibvE1uqFpGI9JivPEERJg/contV6wN1J64N1qaZ7so+Q2Zo1C6KrcVUe7j4yLmO0l2tUzzK54wdpwKSqTc+vRNwXIit1iDUAcahYgfoj7236i0hGzTQxIT5vc5CWC5gAJVbOprRgF4NNJQzpkq9JIpt/Mw+9Qn9WwfDwqm+gH3n3QlIMlRB22jNnZ2btSaF3F8e5jXARGbC4ADISJzyxudohQ8k2SouEWHirlCw6hrKM/mSG0GubQEdAfaTGGkmysIdX3SNoyfnXom3+yPqPEJy9sguEPoo1deyAkIdjHzdNajj06GGZh0lSPQwKjil5OC9z4aFsKHBRe3JMMppbR42Y3wDpLYASYOcU2Xw== ec2-user@ip-172-31-4-138.ap-northeast-1.compute.internal'],
-                                  keys: ['~/.ssh/git@github.com:TAKUYA34/furima-38247.git.pem'] 
+set :ssh_options, auth_methods: ['publickey'],
+                                  keys: ['~/.ssh/ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC180ethyfZivFmBUbP9Y2UgY/gzpjBOubsetUPB3WTmaXVQ6GAOxNtel2wwkw7ZnLTjXocog5gHoRuUp0vJzfbVyh4J1G9pCdxsMNLrIhyOCPoFewOqGF+8UkE0TzNueAHBpw14nkb/Bi4os4eekFu92iGpNpD7qszLckiz/YxhV+czt/5U+4tUZTElhuG8XqMbW04ovJPQ3E24bfh3+cH9C5wm8U7VH/jfrQuVyUhW6rR573PvynMadIiRxIOLt6jaZg18T5Lzt/81axz/fs/9I30zV9Ohv/A9kC2itDTdqcCFmnhHKxsmyLxCbElb3SJajPibvE1uqFpGI9JivPEERJg/contV6wN1J64N1qaZ7so+Q2Zo1C6KrcVUe7j4yLmO0l2tUzzK54wdpwKSqTc+vRNwXIit1iDUAcahYgfoj7236i0hGzTQxIT5vc5CWC5gAJVbOprRgF4NNJQzpkq9JIpt/Mw+9Qn9WwfDwqm+gH3n3QlIMlRB22jNnZ2btSaF3F8e5jXARGbC4ADISJzyxudohQ8k2SouEWHirlCw6hrKM/mSG0GubQEdAfaTGGkmysIdX3SNoyfnXom3+yPqPEJy9sguEPoo1deyAkIdjHzdNajj06GGZh0lSPQwKjil5OC9z4aFsKHBRe3JMMppbR42Y3wDpLYASYOcU2Xw== ec2-user@ip-172-31-4-138.ap-northeast-1.compute.internal.pem'] 
 
 # プロセス番号を記載したファイルの場所
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
